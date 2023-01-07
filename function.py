@@ -16,9 +16,9 @@ def InteractiveScatter(df,dforiginal):
     
     
     # Create FigureWidget with scatter plot of gdpPercap and lifeExp
-    f = go.FigureWidget([go.Scatter(x=df['Style'], y=df['review_overall'], mode='markers' ,text=dforiginal['Name'],customdata = dforiginal["Name"])])
-    f.update_layout(title='Style vs review_overall', xaxis=dict(
-            title="Style"
+    f = go.FigureWidget([go.Scatter(x=df['ABV'], y=df['review_overall'], mode='markers' ,text=dforiginal['Name'],customdata = dforiginal["Name"])])
+    f.update_layout(title='ABV vs review_overall', xaxis=dict(
+            title="ABV"
         ),
         yaxis=dict(
             title="review_overall"
@@ -28,10 +28,10 @@ def InteractiveScatter(df,dforiginal):
     # Add linear regression to the plot
     f.add_shape(
         type='line',
-        x0=min(df['Style']),
-        y0=df['Style'].apply(lambda x: np.poly1d(np.polyfit(df['Style'], df['review_overall'], 1))(x)).min(),
-        x1=max(df['Style']),
-        y1=df['Style'].apply(lambda x: np.poly1d(np.polyfit(df['Style'], df['review_overall'], 1))(x)).max(),
+        x0=min(df['ABV']),
+        y0=df['ABV'].apply(lambda x: np.poly1d(np.polyfit(df['ABV'], df['review_overall'], 1))(x)).min(),
+        x1=max(df['ABV']),
+        y1=df['ABV'].apply(lambda x: np.poly1d(np.polyfit(df['ABV'], df['review_overall'], 1))(x)).max(),
         yref='y',
         line=dict(color='red')
     )
